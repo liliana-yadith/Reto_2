@@ -7,9 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         { id: 4, nombre: 'Camiseta Estampada', precio: 25.50, imagen: './assets/img/estampada.png' },
         { id: 5, nombre: 'Falda Mini', precio: 65.00, imagen: './assets/img/minifalda.png' },
         { id: 6, nombre: 'Vestido Lino Fresco', precio: 89.95, imagen: './assets/img/vestido.png' },
-        { id: 7, nombre: 'Camiseta Casual', precio: 35.00, imagen: './assets/img/camiseta1.jpg' },
-        { id: 8, nombre: 'Pantalón Jean', precio: 55.00, imagen: './assets/img/pantalon1.jpg' },
-        { id: 9, nombre: 'Zapatos Deportivos', precio: 75.00, imagen: './assets/img/zapatillas1.jpg' }
+      
         // Agrega aquí más productos...
     ];
 
