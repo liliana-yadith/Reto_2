@@ -20,7 +20,7 @@
     </nav>
   </header>
 
-  <div id="carouselExample" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-interval="500">
+  <div id="carouselExample" class="carousel slide mb-5" data-bs-ride="carousel" data-bs-interval="1000">
     <div class="carousel-indicators">
       <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
       <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -82,7 +82,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
       var myCarousel = new bootstrap.Carousel(document.getElementById('carouselExample'), {
-        interval: 500,
+        interval: 1000,
         wrap: true
       });
     });
