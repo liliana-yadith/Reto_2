@@ -37,20 +37,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Inicializar botones en la página de productos
-    function inicializarBotonesProductos() {
-        if (listaProductosPagina) {
-            const botonesComprar = document.querySelectorAll('.btn-agregar-carrito');
-            botonesComprar.forEach(boton => {
-                boton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const idProducto = this.getAttribute('data-id');
-                    agregarAlCarrito(idProducto);
-                });
-            });
-        }
-    }
-
     // Agregar producto al carrito
     function agregarAlCarrito(id) {
         const productoSeleccionado = productos.find(producto => producto.id === parseInt(id));
@@ -129,7 +115,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Event listener para botón de finalizar compra
+    // Event listeners para botones
+    document.addEventListener('click', function(e) {
+        // Para agregar productos al carrito
+        if (e.target.classList.contains('btn-agregar-carrito')) {
+            e.preventDefault();
+            const idProducto = e.target.getAttribute('data-id');
+            agregarAlCarrito(idProducto);
+        }
+        
+        // Para eliminar productos del carrito
+        if (e.target.classList.contains('btn-eliminar-item') || 
+            (e.target.parentElement && e.target.parentElement.classList.contains('btn-eliminar-item'))) {
+            const boton = e.target.classList.contains('btn-eliminar-item') ? e.target : e.target.parentElement;
+            const idProducto = boton.getAttribute('data-id');
+            eliminarDelCarrito(idProducto);
+        }
+    });
+
+    // Finalizar compra
     if (btnFinalizarCompra) {
         btnFinalizarCompra.addEventListener('click', function() {
             if (carrito.length > 0) {
@@ -142,19 +146,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Event listener para botones de eliminar dentro del carrito
-    if (listaCarrito) {
-        listaCarrito.addEventListener('click', function(e) {
-            if (e.target.classList.contains('btn-eliminar-item') || e.target.parentElement.classList.contains('btn-eliminar-item')) {
-                const boton = e.target.classList.contains('btn-eliminar-item') ? e.target : e.target.parentElement;
-                const idProducto = boton.getAttribute('data-id');
-                eliminarDelCarrito(idProducto);
-            }
-        });
-    }
-
     // Inicializar la tienda
     mostrarProductosEnInicio();
-    inicializarBotonesProductos();
     cargarCarritoDesdeLocalStorage();
 });
